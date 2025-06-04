@@ -1,0 +1,8 @@
+baseURL = 'https://GPGCode.github.io'
+languageCode = 'en-us'
+title = 'GPGBlog'
+theme = 'PaperMod'
+
+[params]
+	ShowReadingTime = true
+	ShowCodeCopyButtons = true
