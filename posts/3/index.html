@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>3. Time sinks -- a game idea arises. | GPG&#39;s Dev Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="🧱 Pixel Art: An Unexpected Obsession
+I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.
+While fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?
+It’s no secret that making a solo game is hard as hell — especially when you&rsquo;re not using Blueprints or Unity&rsquo;s editor. Once programming is under control, all that&rsquo;s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.">
+<meta name="author" content="">
+<link rel="canonical" href="https://GPGCode.github.io/GPGBlog/posts/3/">
+<link crossorigin="anonymous" href="https://GPGCode.github.io/GPGBlog/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://GPGCode.github.io/GPGBlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://GPGCode.github.io/GPGBlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://GPGCode.github.io/GPGBlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://GPGCode.github.io/GPGBlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://GPGCode.github.io/GPGBlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://GPGCode.github.io/GPGBlog/posts/3/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://GPGCode.github.io/GPGBlog/posts/3/">
+  <meta property="og:site_name" content="GPG&#39;s Dev Blog">
+  <meta property="og:title" content="3. Time sinks -- a game idea arises.">
+  <meta property="og:description" content="🧱 Pixel Art: An Unexpected Obsession I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.
+While fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?
+It’s no secret that making a solo game is hard as hell — especially when you’re not using Blueprints or Unity’s editor. Once programming is under control, all that’s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3. Time sinks -- a game idea arises.">
+<meta name="twitter:description" content="🧱 Pixel Art: An Unexpected Obsession
+I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.
+While fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?
+It’s no secret that making a solo game is hard as hell — especially when you&rsquo;re not using Blueprints or Unity&rsquo;s editor. Once programming is under control, all that&rsquo;s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://GPGCode.github.io/GPGBlog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "3. Time sinks -- a game idea arises.",
+      "item": "https://GPGCode.github.io/GPGBlog/posts/3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "3. Time sinks -- a game idea arises.",
+  "name": "3. Time sinks -- a game idea arises.",
+  "description": "🧱 Pixel Art: An Unexpected Obsession I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.\nWhile fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?\nIt’s no secret that making a solo game is hard as hell — especially when you\u0026rsquo;re not using Blueprints or Unity\u0026rsquo;s editor. Once programming is under control, all that\u0026rsquo;s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "🧱 Pixel Art: An Unexpected Obsession I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.\nWhile fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?\nIt’s no secret that making a solo game is hard as hell — especially when you’re not using Blueprints or Unity’s editor. Once programming is under control, all that’s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.\nMy siblings were mini-prodigies with a pencil, but I’m lucky if I can sketch a readable stick figure. Even my handwriting looks like it’s in distress.\nSo I went on a deep, desperate YouTube dive: What do devs like me do when they suck at art?\nTurns out, a lot of us find salvation in pixel art.\n🎨 Sprites, Wizards, and Perspective Choices I’ve been messing around with Aseprite for a few days now — just drawing random stuff to see if I can produce anything even remotely “shippable.” So far? I’ve created a wizard made up of less than 100 pixels. He’s simple. No detail. But he’s mine.\nWith art exploration came the next question: what camera perspective should I go for?\nFirst-person is likely off the table — I want to keep this 2D, both to stay sane and to learn SDL/OpenGL fundamentals without firehosing my brain. 3D does tempt me — especially with how much storytelling control you can get from a camera — but for now, I’m leaning toward either:\nA top-down RPG-style perspective, or A platformer/side-scroller (classic indie territory) Still undecided. But it’s progress just having those narrowed down.\n🐢 A Story Device Rooted in Time I want anything built in this engine to feel alive. The world should grow, decay, and respond to time. Not just passively — but meaningfully.\nAnd then it hit me: What if everything around the player aged faster?\nLike… wildly faster.\nIt opens up some juicy narrative possibilities. Imagine a childhood friend dying mid-conversation. Or NPCs avoiding you because of the fear you represent. A character cursed (or blessed?) with accelerated entropy in their vicinity.\nExcept one doesn’t fear you: A turtle.\nTurtles are not just adorable — they also exhibit negligible senescence. That means they basically don’t age the same way we do. They don’t deteriorate functionally over time the way humans do. (Whales also qualify, but they don’t fit in a backpack.)\nSo yeah — the idea of a turtle sidekick has officially entered the design doc. It’s thematic, scientific, and cute.\n⚙️ Engine Roadmap: Next Steps Here’s what’s next on the technical front for the Mycelium Engine: 🔧 Engine Features\nExpand ECS system: Add system messaging Add serialization (for save/load) Add EffectTriggerSystem (events like decay explosion) Add ConditionSystem (track things like rust level) Add a basic AudioSystem 🧰 Tooling \u0026 Debug\nBuild an entity inspector Add a log console overlay Implement hot reload for shaders and assets 🧠 Game Logic\nPrototype cutscene playback Start a basic AI system (for the turtle) Continue refining visual state changes (e.g., sprites showing rust or aging) It’s a lot. But it’s my a lot. And I’m excited.\n",
+  "wordCount" : "564",
+  "inLanguage": "en",
+  "datePublished": "2025-06-14T00:00:00Z",
+  "dateModified": "2025-06-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://GPGCode.github.io/GPGBlog/posts/3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GPG's Dev Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://GPGCode.github.io/GPGBlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://GPGCode.github.io/GPGBlog/" accesskey="h" title="GPG&#39;s Dev Blog (Alt + H)">GPG&#39;s Dev Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      3. Time sinks -- a game idea arises.
+    </h1>
+    <div class="post-meta"><span title='2025-06-14 00:00:00 +0000 UTC'>June 14, 2025</span>&nbsp;·&nbsp;3 min
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="-pixel-art-an-unexpected-obsession">🧱 Pixel Art: An Unexpected Obsession<a hidden class="anchor" aria-hidden="true" href="#-pixel-art-an-unexpected-obsession">#</a></h1>
+<p>I don’t really know how I got sucked into the world of Aseprite and pixel art so fast, but man — that rabbit hole is dangerous.</p>
+<p>While fleshing out my ECS (Entity, Component, System) and rendering systems, I kept thinking: What will this game actually look like? How will it feel? Will it have a narrative? Will it be 2D or 3D?</p>
+<p>It’s no secret that making a solo game is hard as hell — especially when you&rsquo;re not using Blueprints or Unity&rsquo;s editor. Once programming is under control, all that&rsquo;s left is art and audio — which, funny enough, are exactly the areas where I have the least natural talent.</p>
+<p>My siblings were mini-prodigies with a pencil, but I’m lucky if I can sketch a readable stick figure. Even my handwriting looks like it&rsquo;s in distress.</p>
+<p>So I went on a deep, desperate YouTube dive: What do devs like me do when they suck at art?</p>
+<p>Turns out, a lot of us find salvation in pixel art.</p>
+<h1 id="-sprites-wizards-and-perspective-choices">🎨 Sprites, Wizards, and Perspective Choices<a hidden class="anchor" aria-hidden="true" href="#-sprites-wizards-and-perspective-choices">#</a></h1>
+<p>I’ve been messing around with Aseprite for a few days now — just drawing random stuff to see if I can produce anything even remotely “shippable.” So far? I’ve created a wizard made up of less than 100 pixels. He’s simple. No detail. But he’s mine.</p>
+<p>With art exploration came the next question: what camera perspective should I go for?</p>
+<p>First-person is likely off the table — I want to keep this 2D, both to stay sane and to learn SDL/OpenGL fundamentals without firehosing my brain. 3D does tempt me — especially with how much storytelling control you can get from a camera — but for now, I’m leaning toward either:</p>
+<pre><code>A top-down RPG-style perspective, or
+
+A platformer/side-scroller (classic indie territory)
+</code></pre>
+<p>Still undecided. But it’s progress just having those narrowed down.</p>
+<h1 id="-a-story-device-rooted-in-time">🐢 A Story Device Rooted in Time<a hidden class="anchor" aria-hidden="true" href="#-a-story-device-rooted-in-time">#</a></h1>
+<p>I want anything built in this engine to feel alive. The world should grow, decay, and respond to time. Not just passively — but meaningfully.</p>
+<p>And then it hit me:
+What if everything around the player aged faster?</p>
+<p>Like&hellip; wildly faster.</p>
+<p>It opens up some juicy narrative possibilities. Imagine a childhood friend dying mid-conversation. Or NPCs avoiding you because of the fear you represent. A character cursed (or blessed?) with accelerated entropy in their vicinity.</p>
+<p>Except one doesn’t fear you:
+A turtle.</p>
+<p>Turtles are not just adorable — they also exhibit negligible senescence. That means they basically don’t age the same way we do. They don’t deteriorate functionally over time the way humans do. (Whales also qualify, but they don’t fit in a backpack.)</p>
+<p>So yeah — the idea of a turtle sidekick has officially entered the design doc. It’s thematic, scientific, and cute.</p>
+<h1 id="-engine-roadmap-next-steps">⚙️ Engine Roadmap: Next Steps<a hidden class="anchor" aria-hidden="true" href="#-engine-roadmap-next-steps">#</a></h1>
+<p>Here’s what’s next on the technical front for the Mycelium Engine:
+🔧 Engine Features</p>
+<pre><code>Expand ECS system:
+
+    Add system messaging
+
+    Add serialization (for save/load)
+
+Add EffectTriggerSystem (events like decay explosion)
+
+Add ConditionSystem (track things like rust level)
+
+Add a basic AudioSystem
+</code></pre>
+<p>🧰 Tooling &amp; Debug</p>
+<pre><code>Build an entity inspector
+
+Add a log console overlay
+
+Implement hot reload for shaders and assets
+</code></pre>
+<p>🧠 Game Logic</p>
+<pre><code>Prototype cutscene playback
+
+Start a basic AI system (for the turtle)
+
+Continue refining visual state changes (e.g., sprites showing rust or aging)
+</code></pre>
+<p>It’s a lot. But it’s my a lot.
+And I’m excited.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://GPGCode.github.io/GPGBlog/">GPG&#39;s Dev Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

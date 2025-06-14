@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>2. Mycelium Game Engine lives - What we&#39;ve done so far. | GPG&#39;s Dev Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="Gameplan
+I needed a hook.
+Why would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?
+Truth is — it’ll never be fully justified. Those engines are simply too good.
+But I needed a hook regardless.
+Entropy in Game Development as a first-class system
+I could be off — way off. I’ve never done this before, and I have no idea what I’m doing.
+But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.">
+<meta name="author" content="">
+<link rel="canonical" href="https://GPGCode.github.io/GPGBlog/posts/2/">
+<link crossorigin="anonymous" href="https://GPGCode.github.io/GPGBlog/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://GPGCode.github.io/GPGBlog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://GPGCode.github.io/GPGBlog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://GPGCode.github.io/GPGBlog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://GPGCode.github.io/GPGBlog/apple-touch-icon.png">
+<link rel="mask-icon" href="https://GPGCode.github.io/GPGBlog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://GPGCode.github.io/GPGBlog/posts/2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://GPGCode.github.io/GPGBlog/posts/2/">
+  <meta property="og:site_name" content="GPG&#39;s Dev Blog">
+  <meta property="og:title" content="2. Mycelium Game Engine lives - What we&#39;ve done so far.">
+  <meta property="og:description" content="Gameplan I needed a hook.
+Why would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?
+Truth is — it’ll never be fully justified. Those engines are simply too good. But I needed a hook regardless.
+Entropy in Game Development as a first-class system I could be off — way off. I’ve never done this before, and I have no idea what I’m doing. But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-04T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2. Mycelium Game Engine lives - What we&#39;ve done so far.">
+<meta name="twitter:description" content="Gameplan
+I needed a hook.
+Why would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?
+Truth is — it’ll never be fully justified. Those engines are simply too good.
+But I needed a hook regardless.
+Entropy in Game Development as a first-class system
+I could be off — way off. I’ve never done this before, and I have no idea what I’m doing.
+But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://GPGCode.github.io/GPGBlog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "2. Mycelium Game Engine lives - What we've done so far.",
+      "item": "https://GPGCode.github.io/GPGBlog/posts/2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2. Mycelium Game Engine lives - What we've done so far.",
+  "name": "2. Mycelium Game Engine lives - What we\u0027ve done so far.",
+  "description": "Gameplan I needed a hook.\nWhy would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?\nTruth is — it’ll never be fully justified. Those engines are simply too good. But I needed a hook regardless.\nEntropy in Game Development as a first-class system I could be off — way off. I’ve never done this before, and I have no idea what I’m doing. But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "Gameplan I needed a hook.\nWhy would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?\nTruth is — it’ll never be fully justified. Those engines are simply too good. But I needed a hook regardless.\nEntropy in Game Development as a first-class system I could be off — way off. I’ve never done this before, and I have no idea what I’m doing. But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.\nThey give you clocks, frame counters, deltas. But what about meaningful time?\nI want to natively account for aging, decay, withering — systems that evolve without player input.\nI want to start development with the idea that every single object in the game has a sense of how long it — and everything around it — has existed. Time should be treated the same as position or velocity: something every entity can feel, react to, and be changed by.\nThat’s why I’m calling my engine Mycelium — for its constant spreading, connectivity, and transformation. Like fungi.\nIf you’ve played Death Stranding, this probably sounds familiar — where footsteps wear paths into terrain and supernatural rain ages structures. This would enable that, but on a much grander scale where you have to opt-out of a path/building/flower aging.\nECS (Entity, Component, System) ECS (Entity, Component, System)\nThe first thing I built — after some light research into what a game engine actually is — was an ECS system.\nBasically, it’s a relationship between:\nEntities: objects/lights/noises/etc., represented only by a number Components: basic data-only structs that represent an entity's properties Systems: logic that runs on components Why do this?\nBecause you can turn your entities into 64-bit bitsets where each bit represents the presence of a component. That lets your systems instantly query and operate only on the entities they care about — fast, cache-friendly, and decoupled.\nI set up the basic structure in a few hours. It’s still pretty gnarly to wrap my head around — I’m used to object-oriented programming, and this is firmly data-oriented.\nRendering (SDL2, openGL) I’ve never rendered anything straight through a GPU-hitting API like this before, but I set up a Rendering System that currently just displays a triangle.\nTurns out, after digging into graphics programming, a triangle is basically the “Hello World” of the GPU world.\nI didn’t realize it, but the GPU is absurdly good at triangles. Everything — CGI, games, visual effects — is essentially triangles.\nAlso learned about fragments, which I think of as… weird quantum pixels? If you’ve got two triangles and one overlaps the other, the overlapped area only displays the closer triangle’s pixels. The would-be pixels from the triangle behind are still processed — these are fragments. That’s how I understand it so far.\nStill learning.\nNext Step: I need to integrate my Rendering System into the ECS.\nThat means building a component like Renderable, and having the rendering system query for entities that have both a Renderable and a Position component. It’ll pass that position to the GPU and — hopefully — I’ll be able to draw multiple triangles dynamically.\nEssentially, I need to bridge the simulation layer with the rendering pipeline.\n…if you wanted to be technical about it, like some kind of nerd.\n",
+  "wordCount" : "571",
+  "inLanguage": "en",
+  "datePublished": "2025-06-04T00:00:00Z",
+  "dateModified": "2025-06-04T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://GPGCode.github.io/GPGBlog/posts/2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GPG's Dev Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://GPGCode.github.io/GPGBlog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://GPGCode.github.io/GPGBlog/" accesskey="h" title="GPG&#39;s Dev Blog (Alt + H)">GPG&#39;s Dev Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      2. Mycelium Game Engine lives - What we&#39;ve done so far.
+    </h1>
+    <div class="post-meta"><span title='2025-06-04 00:00:00 +0000 UTC'>June 4, 2025</span>&nbsp;·&nbsp;3 min
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="gameplan">Gameplan<a hidden class="anchor" aria-hidden="true" href="#gameplan">#</a></h1>
+<p>I needed a hook.</p>
+<p>Why would I want to make a game on my engine? How is it different enough from Unreal or Unity to justify building a game on this, rather than one of those?</p>
+<p>Truth is — it’ll never be fully justified. Those engines are simply too good.
+But I needed a hook regardless.</p>
+<h1 id="entropy-in-game-development-as-a-first-class-system">Entropy in Game Development as a first-class system<a hidden class="anchor" aria-hidden="true" href="#entropy-in-game-development-as-a-first-class-system">#</a></h1>
+<p>I could be off — way off. I’ve never done this before, and I have no idea what I’m doing.
+But I don’t think Unity or Unreal treat time — or rather, change over time — as a first-class system.</p>
+<p>They give you clocks, frame counters, deltas.
+But what about meaningful time?</p>
+<p>I want to natively account for <strong>aging, decay, withering</strong> — systems that evolve without player input.</p>
+<p>I want to start development with the idea that every single object in the game has a sense of how long it — and everything around it — has existed. Time should be treated the same as position or velocity: something every entity can feel, react to, and be changed by.</p>
+<p>That’s why I’m calling my engine <strong>Mycelium</strong> — for its constant spreading, connectivity, and transformation. Like fungi.</p>
+<p>If you’ve played Death Stranding, this probably sounds familiar — where footsteps wear paths into terrain and supernatural rain ages structures. This would enable that, but on a much grander scale where you have to <strong>opt-out</strong> of a path/building/flower aging.</p>
+<h1 id="ecs-entity-component-system">ECS (Entity, Component, System)<a hidden class="anchor" aria-hidden="true" href="#ecs-entity-component-system">#</a></h1>
+<p>ECS (Entity, Component, System)</p>
+<p>The first thing I built — after some light research into what a game engine actually is — was an ECS system.</p>
+<p>Basically, it&rsquo;s a relationship between:</p>
+<pre><code>Entities: objects/lights/noises/etc., represented only by a number
+
+Components: basic data-only structs that represent an entity's properties
+
+Systems: logic that runs on components
+</code></pre>
+<p>Why do this?</p>
+<p>Because you can turn your entities into 64-bit bitsets where each bit represents the presence of a component. That lets your systems <strong>instantly</strong> query and operate only on the entities they care about — fast, cache-friendly, and decoupled.</p>
+<p>I set up the basic structure in a few hours. It’s still pretty gnarly to wrap my head around — I’m used to <strong>object-oriented programming</strong>, and this is firmly <strong>data-oriented</strong>.</p>
+<h1 id="rendering-sdl2-opengl">Rendering (SDL2, openGL)<a hidden class="anchor" aria-hidden="true" href="#rendering-sdl2-opengl">#</a></h1>
+<p>I’ve never rendered anything straight through a GPU-hitting API like this before, but I set up a Rendering System that currently just displays a triangle.</p>
+<p>Turns out, after digging into graphics programming, a triangle is basically the “Hello World” of the GPU world.</p>
+<p>I didn’t realize it, but the GPU is absurdly good at triangles. Everything — CGI, games, visual effects — is essentially triangles.</p>
+<p>Also learned about fragments, which I think of as&hellip; weird quantum pixels?
+If you’ve got two triangles and one overlaps the other, the overlapped area only displays the closer triangle’s pixels. The would-be pixels from the triangle behind are still processed — these are fragments. That’s how I understand it so far.</p>
+<p>Still learning.</p>
+<h1 id="next-step">Next Step:<a hidden class="anchor" aria-hidden="true" href="#next-step">#</a></h1>
+<p>I need to integrate my Rendering System into the ECS.</p>
+<p>That means building a component like Renderable, and having the rendering system query for entities that have both a Renderable and a Position component. It’ll pass that position to the GPU and — hopefully — I’ll be able to draw multiple triangles dynamically.</p>
+<p>Essentially, I need to bridge the simulation layer with the rendering pipeline.</p>
+<p>…if you wanted to be technical about it, like some kind of nerd.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://GPGCode.github.io/GPGBlog/">GPG&#39;s Dev Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
